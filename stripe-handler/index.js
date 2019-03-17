@@ -9,12 +9,14 @@ module.exports = function(context, req) {
     req.body &&
     req.body.stripeEmail &&
     req.body.stripeToken &&
-    req.body.stripeAmt
+    req.body.stripeAmt &&
+    req.body.metadata
   ) {
     stripe.customers
       .create({
         email: req.body.stripeEmail,
-        source: req.body.stripeToken
+        source: req.body.stripeToken,
+        metadata: req.body.metadata
       })
       .then(customer => {
         context.log('starting the stripe charges');
