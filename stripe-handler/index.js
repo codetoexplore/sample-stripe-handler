@@ -18,8 +18,7 @@ module.exports = function(context, req) {
         email: req.body.stripeEmail,
         source: req.body.stripeToken,
         metadata: req.body.metadata,
-        shipping: req.body.shipping,
-        address: req.body.shipping.adress.line1
+        shipping: req.body.shipping
       })
       .then(customer => {
         context.log('starting the stripe charges');
