@@ -10,15 +10,22 @@ module.exports = function(context, req) {
     req.body.stripeEmail &&
     req.body.stripeToken &&
     req.body.stripeAmt &&
-    req.body.metadata &&
-    req.body.shipping
+    req.body.metadata 
   ) {
     stripe.customers
       .create({
         email: req.body.stripeEmail,
         source: req.body.stripeToken,
         metadata: req.body.metadata,
-        shipping: req.body.shipping
+        shipping: {
+          name: req.body.stripeShippingName,
+          address: {
+            line1: req.body.stripeShippingAddressLine1,
+            city: req.body.stripeShippingAddressCity,
+            country: req.body.stripeShippingAddressCountry,
+            postal_code: req.body.stripeShippingAddressZip
+          }
+        },
       })
       .then(customer => {
         context.log('starting the stripe charges');
