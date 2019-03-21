@@ -22,6 +22,7 @@ module.exports = function(context, req) {
           address: {
             line1: req.body.stripeShippingAddressLine1,
             city: req.body.stripeShippingAddressCity,
+            state: req.body.shippingAddressstate,
             country: req.body.stripeShippingAddressCountry,
             postal_code: req.body.stripeShippingAddressZip
           }
