@@ -1,4 +1,4 @@
-var stripe = require('stripe')(process.env.MYKEY);
+var stripe = require('stripe')(process.env.CUSTOMCONNSTR_MYKEY);
 // ^ this is a stripe testing key
 
 module.exports = function(context, req) {
